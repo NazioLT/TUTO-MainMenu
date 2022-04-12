@@ -283,8 +283,8 @@ GameObject:
   - component: {fileID: 272167693}
   - component: {fileID: 272167697}
   - component: {fileID: 272167696}
-  - component: {fileID: 272167694}
   - component: {fileID: 272167698}
+  - component: {fileID: 272167694}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
@@ -347,31 +347,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.0015869141
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 0.025611157
+      outSlope: 0.025611157
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.3152804
-      value: 0.44200632
-      inSlope: 2.3376114
-      outSlope: 2.3376114
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.11585744
+      outWeight: 0.08567551
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 0.043620978
+      outSlope: 0.043620978
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.09531979
       outWeight: 0
     m_PreInfinity: 1
     m_PostInfinity: 2
@@ -724,9 +715,9 @@ GameObject:
   m_Component:
   - component: {fileID: 769148598}
   - component: {fileID: 769148600}
-  - component: {fileID: 769148599}
   - component: {fileID: 769148601}
   - component: {fileID: 769148602}
+  - component: {fileID: 769148599}
   m_Layer: 5
   m_Name: MainPanel
   m_TagString: Untagged
@@ -787,20 +778,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.3152804
       value: 0.44200632
-      inSlope: 2.3376114
-      outSlope: 2.3376114
+      inSlope: 2.0699792
+      outSlope: 2.0699792
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.11585744
+      outWeight: 0.039212633
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 0.21695709
+      outSlope: 0.21695709
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.08671867
       outWeight: 0
     m_PreInfinity: 1
     m_PostInfinity: 2

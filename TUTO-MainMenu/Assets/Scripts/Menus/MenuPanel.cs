@@ -9,7 +9,7 @@ public class MenuPanel : MonoBehaviour
 
     [Header("Animation")]
     [SerializeField] private float animationTime;
-    [SerializeField] private AnimationCurve animCurve;
+    [SerializeField] private AnimationCurve animCurve = new AnimationCurve();
 
     private bool state;
 
@@ -26,29 +26,29 @@ public class MenuPanel : MonoBehaviour
     {
         StopAllCoroutines();
 
-        if(_animate) StartCoroutine(Animation(state));
+        if(_animate) StartCoroutine(Animate(state));
         else canvas.enabled = state;
     }
 
-    private IEnumerator Animation(bool _state)
+    private IEnumerator Animate(bool _state)
     {
         canvas.enabled = true;
 
-        float _t = _state ? 0 : 1;//Si = false bah 1 car "descend"
-        float target = _state ? 1 : 0;
-        int factor = _state ? 1 : -1;
+        float _t = _state ? 0 : 1;
+        float _target = _state ? 1 : 0;
+        int _factor = _state ? 1 : -1;
 
-        while (true)
+        while(true)
         {
             yield return null;
 
-            _t += Time.deltaTime * factor / animationTime;
+            _t += Time.deltaTime * _factor / animationTime;
 
             group.alpha = animCurve.Evaluate(_t);
 
-            if ((_state && _t >= target) || (!_state && _t <= target))
+            if((state && _t >= _target) || (!state && _t <= _target))
             {
-                group.alpha = target;
+                group.alpha = _target;
                 break;
             }
         }
