@@ -14,36 +14,41 @@ public class MenuController : MonoBehaviour
 {
     [Header("Panels")]
     [SerializeField] private List<MenuPanel> panelsList = new List<MenuPanel>();
-    protected Dictionary<PanelType, MenuPanel> panelsDict = new Dictionary<PanelType, MenuPanel>();
-    
-    protected GameManager manager;
+    private Dictionary<PanelType, MenuPanel> panelsDict = new Dictionary<PanelType, MenuPanel>();
 
-    protected virtual void Start()
+    private GameManager manager;
+
+    private void Start()
     {
         manager = GameManager.instance;
 
         foreach (var _panel in panelsList)
         {
-            if(_panel)
-            {
-                panelsDict.Add(_panel.GetPanelType(), _panel);
-            }
+            if(_panel) panelsDict.Add(_panel.GetPanelType(), _panel);
         }
 
-        OpenOnePanel(PanelType.Main);
+        OpenOnePanel(PanelType.Main, false);
     }
 
-    private void OpenOnePanel(PanelType _type)
+    private void OpenOnePanel(PanelType _type, bool _animate)
     {
-        foreach (var _panel in panelsList)
-        {
-            _panel.SetState(false);
-        }
+        foreach (var _panel in panelsList) _panel.ChangeState(_animate, false);
 
-        if(_type != PanelType.None) panelsDict[_type].SetState(true);
+        if(_type != PanelType.None) panelsDict[_type].ChangeState(_animate, true);
     }
 
-    public void OpenPanel(PanelType _panel) { OpenOnePanel(_panel); }
-    public virtual void ChangeScene(string _sceneName) { manager.ChangeScene(_sceneName); }
-    public virtual void Quit() { Application.Quit(); }
+    public void OpenPanel(PanelType _type)
+    {
+        OpenOnePanel(_type, true);
+    }
+
+    public void ChangeScene(string _sceneName)
+    {
+        manager.ChangeScene(_sceneName);
+    }
+
+    public void Quit()
+    {
+        manager.Quit();
+    }
 }

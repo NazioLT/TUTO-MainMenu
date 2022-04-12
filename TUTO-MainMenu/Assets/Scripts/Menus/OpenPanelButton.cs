@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class OpenPanelButton : MonoBehaviour
 {
+
     [SerializeField] private PanelType type;
 
-    private MenuController menu;
+    private MenuController controller;
 
-    private void Start()
+    void Start()
     {
-        menu = FindObjectOfType<MenuController>();
+        controller = FindObjectOfType<MenuController>();
     }
 
     public void OnClick()
     {
-        menu.OpenPanel(type);
+        controller.OpenPanel(type);
     }
 }
