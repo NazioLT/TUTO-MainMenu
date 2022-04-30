@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public enum PanelType
 {
@@ -16,6 +17,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] private List<MenuPanel> panelsList = new List<MenuPanel>();
     private Dictionary<PanelType, MenuPanel> panelsDict = new Dictionary<PanelType, MenuPanel>();
 
+    [SerializeField] private EventSystem eventController;
     private GameManager manager;
 
     private void Start()
@@ -24,7 +26,11 @@ public class MenuController : MonoBehaviour
 
         foreach (var _panel in panelsList)
         {
-            if(_panel) panelsDict.Add(_panel.GetPanelType(), _panel);
+            if (_panel)
+            {
+                panelsDict.Add(_panel.GetPanelType(), _panel);
+                _panel.Init(this);
+            }
         }
 
         OpenOnePanel(PanelType.Main, false);
@@ -34,7 +40,7 @@ public class MenuController : MonoBehaviour
     {
         foreach (var _panel in panelsList) _panel.ChangeState(_animate, false);
 
-        if(_type != PanelType.None) panelsDict[_type].ChangeState(_animate, true);
+        if (_type != PanelType.None) panelsDict[_type].ChangeState(_animate, true);
     }
 
     public void OpenPanel(PanelType _type)
@@ -50,5 +56,10 @@ public class MenuController : MonoBehaviour
     public void Quit()
     {
         manager.Quit();
+    }
+
+    public void SetSelectedGameObject(GameObject _element)
+    {
+        eventController.SetSelectedGameObject(_element);
     }
 }

@@ -13,8 +13,12 @@ public class MenuPanel : MonoBehaviour
 
     private bool state;
 
+    [Header("Config")]
+    [SerializeField] private GameObject selectedGameObject;
+
     private Canvas canvas;
     private CanvasGroup group;
+    private MenuController controller;
 
     private void Awake()
     {
@@ -22,12 +26,16 @@ public class MenuPanel : MonoBehaviour
         group = GetComponent<CanvasGroup>();
     }
 
+    public void Init(MenuController _controller) { controller = _controller; }
+
     private void UpdateState(bool _animate)
     {
         StopAllCoroutines();
 
         if(_animate) StartCoroutine(Animate(state));
         else canvas.enabled = state;
+
+        if(state) controller.SetSelectedGameObject(selectedGameObject);
     }
 
     private IEnumerator Animate(bool _state)
