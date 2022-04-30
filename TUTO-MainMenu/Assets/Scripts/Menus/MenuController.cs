@@ -17,7 +17,6 @@ public class MenuController : MonoBehaviour
     [SerializeField] private List<MenuPanel> panelsList = new List<MenuPanel>();
     private Dictionary<PanelType, MenuPanel> panelsDict = new Dictionary<PanelType, MenuPanel>();
 
-    [Header("Refs")]
     [SerializeField] private EventSystem eventController;
     private GameManager manager;
 
@@ -59,7 +58,7 @@ public class MenuController : MonoBehaviour
         manager.Quit();
     }
 
-    public void SetSelectedElement(GameObject _element)
+    public void SetSelectedGameObject(GameObject _element)
     {
         eventController.SetSelectedGameObject(_element);
     }

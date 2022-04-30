@@ -13,8 +13,8 @@ public class MenuPanel : MonoBehaviour
 
     private bool state;
 
-    [Header("Settings")]
-    [SerializeField] private GameObject selectedObject;
+    [Header("Config")]
+    [SerializeField] private GameObject selectedGameObject;
 
     private Canvas canvas;
     private CanvasGroup group;
@@ -35,7 +35,7 @@ public class MenuPanel : MonoBehaviour
         if(_animate) StartCoroutine(Animate(state));
         else canvas.enabled = state;
 
-        if(state) controller.SetSelectedElement(selectedObject);
+        if(state) controller.SetSelectedGameObject(selectedGameObject);
     }
 
     private IEnumerator Animate(bool _state)
