@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Canvas), typeof(CanvasGroup))]
 public class MenuPanel : MonoBehaviour
@@ -15,6 +16,7 @@ public class MenuPanel : MonoBehaviour
 
     [Header("Config")]
     [SerializeField] private GameObject selectedGameObject;
+    [SerializeField] private Button rightPanel, LeftPanel;
 
     private Canvas canvas;
     private CanvasGroup group;
@@ -35,7 +37,7 @@ public class MenuPanel : MonoBehaviour
         if(_animate) StartCoroutine(Animate(state));
         else canvas.enabled = state;
 
-        if(state) controller.SetSelectedGameObject(selectedGameObject);
+        if(state) controller.SetSelectedGameObject(selectedGameObject, rightPanel, LeftPanel);
     }
 
     private IEnumerator Animate(bool _state)

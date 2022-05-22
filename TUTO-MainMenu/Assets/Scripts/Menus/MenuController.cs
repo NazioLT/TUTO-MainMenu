@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public enum PanelType
@@ -19,10 +20,12 @@ public class MenuController : MonoBehaviour
 
     [SerializeField] private EventSystem eventController;
     private GameManager manager;
+    private MenuInputs inputs;
 
     private void Start()
     {
         manager = GameManager.instance;
+        inputs = GetComponent<MenuInputs>();
 
         foreach (var _panel in panelsList)
         {
@@ -58,8 +61,11 @@ public class MenuController : MonoBehaviour
         manager.Quit();
     }
 
-    public void SetSelectedGameObject(GameObject _element)
+    public void SetSelectedGameObject(GameObject _element, Button _rightPanel, Button _leftPanel)
     {
         eventController.SetSelectedGameObject(_element);
+
+        if(_rightPanel != null) inputs.SetShoulderListener(MenuInputs.Side.Right, _rightPanel.onClick.Invoke, _rightPanel.Select);
+        if(_leftPanel != null) inputs.SetShoulderListener(MenuInputs.Side.Left, _leftPanel.onClick.Invoke, _leftPanel.Select);
     }
 }

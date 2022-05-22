@@ -505,6 +505,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   selectedGameObject: {fileID: 1009262952}
+  rightPanel: {fileID: 1009262954}
+  LeftPanel: {fileID: 895021482}
 --- !u!223 &272167695
 Canvas:
   m_ObjectHideFlags: 0
@@ -935,6 +937,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   selectedGameObject: {fileID: 888933727}
+  rightPanel: {fileID: 0}
+  LeftPanel: {fileID: 0}
 --- !u!223 &769148600
 Canvas:
   m_ObjectHideFlags: 0
